@@ -1,0 +1,8 @@
+# System file
+.DS_Store
+
+# VSCode
+.vscode
+
+# Bytecode-compiled
+__pycache__
