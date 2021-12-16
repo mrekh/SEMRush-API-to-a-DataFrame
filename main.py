@@ -3,10 +3,12 @@ import pandas as pd
 
 # The report type
 report_type = ''
-# An identification key assigned to a user after subscribing to SEMrush. The key is available on the Profile page.
+# An identification key assigned to a user after subscribing to SEMrush. The key is available on the Profile page
 key = ''
-# A unique name of a website you’d like to investigate.
+# A unique name of a website you’d like to investigate
 domain = ''
+# A regional database (one value from the list) / Base on your 'report_type' you need to pass the database argument
+# database = ''
 
 
 def req_to_SEMRush_API():
