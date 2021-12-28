@@ -13,16 +13,18 @@ domain = ''
 
 def req_to_SEMRush_API():
     # You can modify your request options here
-    req = f"https://api.semrush.com/?type={report_type}&key={key}&domain={domain}"
+    req = f"https://api.semrush.com/?type={report_type}&key={key}&domain={domain}&export_escape=1"
 
     res = requests.get(req).text
 
-    res_list = [line.split(';') for line in res.split('\n')]
-    for list in res_list:
-        list[-1] = list[-1].strip()
+    res_list = [row for row in res.split('\n')]
+
+    column_name = res_list.pop(0).strip().split(';')
+
+    res_list = [row[1:-2] for row in res_list]
+    res_list = [row.split('";"') for row in res_list]
     res_list = res_list[:-1]
 
-    column_name = res_list.pop(0)
     df = pd.DataFrame(res_list, columns=column_name)
 
     return df
